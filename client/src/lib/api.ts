@@ -9,6 +9,7 @@ import {
   ChangeWorkspaceMemberRoleType,
   CreateProjectPayloadType,
   CreateTaskPayloadType,
+  EditTaskPayloadType,
   CreateWorkspaceResponseType,
   EditProjectPayloadType,
   ProjectByIdPayloadType,
