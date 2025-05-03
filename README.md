@@ -1,23 +1,4 @@
-# 🌟 Advanced MERN B2B Teams Project Management SaaS - *TeamSync*  
 
-## 🎥 Watch the Full Video on YouTube  
-**[Subscribe to the Channel](https://tinyurl.com/subcribe-to-techwithEmma)** to stay updated with more exciting projects and tutorials!  
-
----
-
-## ❤️ Support the Channel
-If you love this project and want to see more, consider supporting the channel:
-- Give this repository a ⭐️ on GitHub.
-- **[Buy Me a Coffee](https://www.buymeacoffee.com/techwithemmaofficial)** to help fund more educational content.  
-- Like, share, and subscribe to the channel for more tutorials and updates!
-
----
-
-## 📌 Project Overview  
-
-Welcome to **TeamSync**, a powerful and scalable multi-tenancy project management system built with **Node.js**, **MongoDB**, and **React**. Designed for real-world B2B needs, this project delivers features like Google Sign-In, workspace management, project tracking, task collaboration, role-based permissions, and more. Perfect for developers aiming to create SaaS-based team collaboration platforms.  
-
----
 
 ## 🌟 Key Features  
 
@@ -64,7 +45,7 @@ Create a `.env` file in the root of your project and configure these variables:
 ```plaintext  
 PORT=8000
 NODE_ENV=development
-MONGO_URI="mongodb+srv://<username>:<password>@<>.mongodb.net/teamsync_db"  
+MONGO_URI="mongodb+srv://<username>:<password>@<>.mongodb.net/crm_db"  
 
 SESSION_SECRET="session_secret_key"
 
@@ -85,40 +66,10 @@ npm install
 npm run dev  
 ```  
 
-Access the backend at `http://localhost:8000`.  
-
----
-
-## 🌐 Deploying TeamSync  
+## 🌐 Deploying 
 
 ### 1. Add Environment Variables  
 Add the `.env` variables to your hosting platform (e.g., Vercel).  
 
 ### 2. Deploy  
 Deploy your app using your preferred method to make it live.  
-
----
-
-## 📚 Comprehensive Guide  
-
-**🚀 Deepen Your Understanding!**  
-We’ve developed an all-encompassing guide for this project that explains:  
-
-- The architecture and design principles behind TeamSync  
-- Step-by-step breakdowns of each feature  
-- Advanced techniques for implementing seeding, Mongoose transactions, and performance optimizations  
-- Insights into multi-tenancy and role-based permission models  
-- Best practices for building scalable SaaS applications  
-
-This guide ensures you gain a thorough understanding of every concept and feature in TeamSync, empowering you to build similar systems or expand upon this project.  
-
-**💡 Ready to learn more?** Check out the full guide now—**[link in the description!](#)**  
-
----
-
-### 📺 Like, Share & Subscribe  
-
-Don’t miss out! **[Subscribe to the Channel](https://tinyurl.com/subcribe-to-techwithEmma)** for more amazing content and exciting projects.  
-
-Now, let’s dive into the demo of **TeamSync**! 🚀
-
