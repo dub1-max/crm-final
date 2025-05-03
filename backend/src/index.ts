@@ -23,8 +23,12 @@ import taskRoutes from "./routes/task.route";
 const app = express();
 const BASE_PATH = config.BASE_PATH;
 
-app.use(express.json());
+// ✅ Validate environment config early
+if (typeof config.validate === "function") {
+  config.validate();
+}
 
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(
@@ -54,7 +58,7 @@ app.get(
     return res.status(HTTPSTATUS.OK).json({
       message: "Server is working! 🚀",
       status: "success",
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     });
   })
 );
@@ -69,7 +73,6 @@ app.use(`${BASE_PATH}/task`, isAuthenticated, taskRoutes);
 app.use(errorHandler);
 
 app.listen(config.PORT, async () => {
-  
   console.log(`Server listening on port ${config.PORT} in ${config.NODE_ENV}`);
   await connectDatabase();
 });
