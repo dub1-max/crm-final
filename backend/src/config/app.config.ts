@@ -25,7 +25,7 @@ const appConfig = () => {
     NODE_ENV: getEnv("NODE_ENV", "development"),
     PORT: getEnv("PORT", "5000"),
     BASE_PATH: getEnv("BASE_PATH", "/api"),
-    MONGO_URI: getEnv("MONGO_URI", "mongodb+srv://businessspaces2:WDHiQHmy4c99dYAv@cluster0.uezznwz.mongodb.net/crm_db"),
+    MONGO_URI: process.env.MONGO_URI as string,
 
     SESSION_SECRET: getEnv("SESSION_SECRET"),
     SESSION_EXPIRES_IN: getEnv("SESSION_EXPIRES_IN"),
