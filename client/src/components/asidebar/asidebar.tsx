@@ -23,7 +23,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import Logo from "@/components/logo";
+//import { Logo } from "../logo";
 import LogoutDialog from "./logout-dialog";
 import { WorkspaceSwitcher } from "./workspace-switcher";
 import { NavMain } from "./nav-main";
@@ -31,6 +31,9 @@ import { NavProjects } from "./nav-projects";
 import { Separator } from "../ui/separator";
 import useWorkspaceId from "@/hooks/use-workspace-id";
 import { useAuthContext } from "@/context/auth-provider";
+import { NavSales } from "./nav-sales";
+import { NavCustomers } from "./nav-customers";
+import { NavContracts } from "./nav-contracts";
 
 const Asidebar = () => {
   const { isLoading, user } = useAuthContext();
@@ -45,7 +48,7 @@ const Asidebar = () => {
       <Sidebar collapsible="icon">
         <SidebarHeader className="!py-0 dark:bg-background">
           <div className="flex h-[50px] items-center justify-start w-full px-1">
-            <Logo url={`/workspace/${workspaceId}`} />
+            {/* <Logo url={`/workspace/${workspaceId}`} /> */}
             {open && (
               <Link
                 to={`/workspace/${workspaceId}`}
@@ -62,6 +65,10 @@ const Asidebar = () => {
               <WorkspaceSwitcher />
               <Separator />
               <NavMain />
+              <Separator />
+              <NavSales />
+              <NavContracts />
+              <NavCustomers />
               <Separator />
               <NavProjects />
             </SidebarGroupContent>

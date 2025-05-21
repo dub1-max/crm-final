@@ -122,7 +122,7 @@ export default function CreateTaskForm(props: {
       message: "AssignedTo is required",
     }),
     dueDate: z.date({
-      required_error: "A date of birth is required.",
+      required_error: "Due date is required.",
     }),
   });
 
@@ -336,41 +336,45 @@ export default function CreateTaskForm(props: {
                 control={form.control}
                 name="dueDate"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className="relative">
                     <FormLabel>Due Date</FormLabel>
-                    <Popover>
+                    <Popover modal={true}>
                       <PopoverTrigger asChild>
-                        <FormControl>
-                          <Button
-                            variant={"outline"}
-                            className={cn(
-                              "w-full flex-1 pl-3 text-left font-normal",
-                              !field.value && "text-muted-foreground"
-                            )}
-                          >
-                            {field.value ? (
-                              format(field.value, "PPP")
-                            ) : (
-                              <span>Pick a date</span>
-                            )}
-                            <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                          </Button>
-                        </FormControl>
+                        <Button
+                          variant="outline"
+                          type="button"
+                          role="combobox"
+                          aria-expanded={field.value ? true : false}
+                          className={cn(
+                            "w-full justify-between",
+                            !field.value && "text-muted-foreground"
+                          )}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                          }}
+                        >
+                          {field.value ? format(field.value, "PPP") : "Pick a date"}
+                          <CalendarIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                        </Button>
                       </PopoverTrigger>
-                      <PopoverContent className="w-auto p-0" align="start">
+                      <PopoverContent 
+                        className="w-auto p-0 z-[100]" 
+                        align="start"
+                        side="bottom"
+                        sideOffset={4}
+                      >
                         <Calendar
                           mode="single"
                           selected={field.value}
-                          onSelect={field.onChange}
-                          disabled={
-                            (date) =>
-                              date <
-                                new Date(new Date().setHours(0, 0, 0, 0)) || // Disable past dates
-                              date > new Date("2100-12-31") //Prevent selection beyond a far future date
-                          }
+                          onSelect={(date) => {
+                            field.onChange(date);
+                            // Close popover after selection
+                            const closeEvent = new Event('click');
+                            document.dispatchEvent(closeEvent);
+                          }}
+                          disabled={(date) => date < new Date(new Date().setHours(0, 0, 0, 0))}
                           initialFocus
-                          defaultMonth={new Date()}
-                          fromMonth={new Date()}
+                          className="rounded-md border"
                         />
                       </PopoverContent>
                     </Popover>

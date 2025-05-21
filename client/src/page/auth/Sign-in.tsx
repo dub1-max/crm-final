@@ -19,7 +19,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import Logo from "@/components/logo";
+// import { Logo } from "../../components/logo";
 import GoogleOauthButton from "@/components/auth/google-oauth-button";
 import { useMutation } from "@tanstack/react-query";
 import { loginMutationFn } from "@/lib/api";
@@ -79,7 +79,7 @@ const SignIn = () => {
           to="/"
           className="flex items-center gap-2 self-center font-medium"
         >
-          <Logo />
+          {/* <Logo /> */}
           CRM
         </Link>
         <div className="flex flex-col gap-6">
@@ -165,7 +165,7 @@ const SignIn = () => {
                       </Button>
                     </div>
                     <div className="text-center text-sm">
-                      Don&apos;t have an account?{" "}
+                      Don&apos;t have  account?{" "}
                       <Link
                         to="/sign-up"
                         className="underline underline-offset-4"

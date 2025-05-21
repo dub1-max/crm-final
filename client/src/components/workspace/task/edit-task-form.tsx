@@ -34,6 +34,7 @@ import { editTaskMutationFn } from "@/lib/api";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "@/hooks/use-toast";
 import { TaskType } from "@/types/api.type";
+import { cn } from "@/lib/utils";
 
 export default function EditTaskForm({ task, onClose }: { task: TaskType; onClose: () => void }) {
   const queryClient = useQueryClient();
@@ -163,19 +164,46 @@ export default function EditTaskForm({ task, onClose }: { task: TaskType; onClos
 
             {/* Due Date */}
             <FormField control={form.control} name="dueDate" render={({ field }) => (
-              <FormItem>
+              <FormItem className="relative">
                 <FormLabel>Due Date</FormLabel>
-                <Popover>
+                <Popover modal={true}>
                   <PopoverTrigger asChild>
-                    <FormControl>
-                      <Button variant="outline">
-                        {field.value ? format(field.value, "PPP") : "Pick a date"}
-                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                      </Button>
-                    </FormControl>
+                    <Button
+                      variant="outline"
+                      type="button"
+                      role="combobox"
+                      aria-expanded={field.value ? true : false}
+                      className={cn(
+                        "w-full justify-between",
+                        !field.value && "text-muted-foreground"
+                      )}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                      }}
+                    >
+                      {field.value ? format(field.value, "PPP") : "Pick a date"}
+                      <CalendarIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                    </Button>
                   </PopoverTrigger>
-                  <PopoverContent>
-                    <Calendar mode="single" selected={field.value} onSelect={field.onChange} />
+                  <PopoverContent 
+                    className="w-auto p-0 z-[100]" 
+                    align="start"
+                    side="bottom"
+                    sideOffset={4}
+                  >
+                    <Calendar
+                      mode="single"
+                      selected={field.value}
+                      onSelect={(date) => {
+                        field.onChange(date);
+                        // Close popover after selection
+                        const closeEvent = new Event('click');
+                        document.dispatchEvent(closeEvent);
+                      }}
+                      disabled={(date) => date < new Date(new Date().setHours(0, 0, 0, 0))}
+                      initialFocus
+                      className="rounded-md border"
+                    />
                   </PopoverContent>
                 </Popover>
                 <FormMessage />

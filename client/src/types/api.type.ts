@@ -283,3 +283,16 @@ export type AllTaskResponseType = {
   tasks: TaskType[];
   pagination: PaginationType;
 };
+
+export type Customer = {
+  _id: string;
+  company: string;
+  primaryContact: {
+    name: string;
+    email: string;
+  };
+  phone: string;
+  active: boolean;
+  groups: string[];
+  dateCreated: string;
+};

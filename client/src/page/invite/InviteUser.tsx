@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Logo from "@/components/logo";
+import { Logo } from "../../components/logo";
 import { Button } from "@/components/ui/button";
 import { BASE_ROUTE } from "@/routes/common/routePaths";
 import useAuth from "@/hooks/api/use-auth";
